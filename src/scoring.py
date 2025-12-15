@@ -41,6 +41,11 @@ def apply_scoring(scoring_df: pd.DataFrame) -> pd.DataFrame:
         0.1 * df["repeat_score"]
     )
 
+    # Soft preference boosts (optional)
+
+    if "cuisine_match" in df.columns:
+        df.loc[df["cuisine_match"], "final_score"] += 0.03
+
     # Penalize bad experiences
     df.loc[df["avg_rating"] < 2.5, "final_score"] *= 0.3
     df.loc[df["would_make_again_rate"] < 0.3, "final_score"] *= 0.5

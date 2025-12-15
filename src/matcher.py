@@ -96,3 +96,31 @@ def get_missing_ingredients(
     )
 
     return missing
+
+def filter_recipes_by_preferences(
+    recipes_df: pd.DataFrame,
+    preferences: dict
+) -> pd.DataFrame:
+    """
+    Filters recipes based on cuisine, diet type, and constraints.
+    """
+
+    df = recipes_df.copy()
+
+    # Diet filter
+    if "diet_type" in preferences and preferences["diet_type"]:
+        df = df[df["diet_type"] == preferences["diet_type"]]
+
+    # Cuisine filter
+    if "cuisine" in preferences and preferences["cuisine"]:
+        df = df[df["cuisine"] == preferences["cuisine"]]
+
+    # Airfryer constraint
+    if not preferences.get("allow_airfryer", True):
+        df = df[df["requires_airfryer"] == False]
+
+    # Soaking constraint
+    if not preferences.get("allow_soaking", False):
+        df = df[df["requires_soaking"] == False]
+
+    return df

@@ -45,6 +45,14 @@ def recommend_recipes(
 
     base_df["missing_ingredients"] = base_df["missing_ingredients"].fillna('[]')
 
+    # Add cuisine preference signal (soft)
+    if "cuisine" in preferences and preferences["cuisine"]:
+        base_df["cuisine_match"] = (
+            base_df["cuisine"] == preferences["cuisine"]
+        )
+    else:
+        base_df["cuisine_match"] = False
+
     # 3. Apply hard constraints
     base_df = _apply_constraints(base_df, preferences)
 
@@ -77,8 +85,17 @@ def _apply_constraints(df: pd.DataFrame, prefs: dict) -> pd.DataFrame:
         filtered["pantry_match_pct"] >= prefs.get("min_pantry_match_pct", 0)
     ]
 
-    if "meal_type" in prefs:
+    if "meal_type" in prefs and prefs["meal_type"]:
         filtered = filtered[filtered["dish_type"] == prefs["meal_type"]]
+
+    # ✅ HARD FILTER: Diet type
+    if "diet_type" in prefs and prefs["diet_type"]:
+        filtered = filtered[filtered["diet_type"] == prefs["diet_type"]]
+    
+    if "dish_category" in prefs and prefs["dish_category"]:
+        filtered = filtered[
+            filtered["dish_category"] == prefs["dish_category"]
+        ]
 
     if not prefs.get("allow_airfryer", True):
         filtered = filtered[filtered["requires_airfryer"] == False]
