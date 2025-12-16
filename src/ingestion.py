@@ -23,13 +23,17 @@ def ingest_recipe(
 
     now = datetime.utcnow().isoformat()
 
-    # --- 1. Create recipe ---
+    # ---------- 1. Create recipe ----------
     recipe_id = _get_next_id(recipes_df, "recipe_id")
 
     new_recipe = {
         "recipe_id": recipe_id,
         "name": recipe_payload["name"],
         "dish_type": recipe_payload["dish_type"],
+        "cuisine": recipe_payload["cuisine"],
+        "diet_type": recipe_payload["diet_type"],
+        "dish_category": recipe_payload["dish_category"],
+        "cooking_time_minutes": recipe_payload["cooking_time_minutes"],
         "requires_airfryer": recipe_payload["requires_airfryer"],
         "requires_soaking": recipe_payload["requires_soaking"],
         "meal_prep_friendly": recipe_payload["meal_prep_friendly"],
@@ -44,7 +48,7 @@ def ingest_recipe(
         ignore_index=True
     )
 
-    # --- 2. Handle ingredients ---
+    # ---------- 2. Handle ingredients ----------
     ingredients_updated = ingredients_df.copy()
     recipe_ing_rows = []
 
@@ -74,6 +78,7 @@ def ingest_recipe(
             "recipe_id": recipe_id,
             "ingredient_id": ingredient_id,
             "quantity": ing["quantity"],
+            "unit": ing["unit"],
             "is_optional": ing["is_optional"]
         })
 
@@ -82,7 +87,7 @@ def ingest_recipe(
         ignore_index=True
     )
 
-    # --- 3. Persist (append-only) ---
+    # ---------- 3. Persist ----------
     recipes_updated.to_csv(paths["recipes"], index=False)
     ingredients_updated.to_csv(paths["ingredients"], index=False)
     recipe_ingredients_updated.to_csv(paths["recipe_ingredients"], index=False)
