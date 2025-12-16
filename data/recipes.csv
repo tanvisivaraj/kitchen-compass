@@ -1,0 +1,7 @@
+recipe_id,name,dish_type,cuisine,diet_type,dish_category,cooking_time_minutes,requires_airfryer,requires_soaking,meal_prep_friendly,video_link,created_at,created_by,is_active
+1,vanilla latte,beverage,gen,veg,coffee,5,False,False,False,https://www.instagram.com/reel/DSUJUsSE0_G/?igsh=MTJxam5vY3lqNmIxZA==,2025-12-16T15:19:46.565268,Tanvi,True
+2,soya cheese sandwich,breakfast,gen,veg,sandwich,15,False,False,False,https://www.instagram.com/reel/DSNdwXkgcfj/?igsh=aW4wd281MzMwYjhr,2025-12-16T15:25:51.029074,Tanvi,True
+3,paneer cheela,meal,indian,veg,cheela,20,False,False,False,https://www.instagram.com/reel/DNDgtnOyLbj/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==,2025-12-16T15:32:01.321166,Tanvi,True
+4,one pot pasta,meal,italian,veg,pasta,35,False,False,False,https://www.instagram.com/reel/DQ1o871km1H/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==,2025-12-16T15:38:09.607243,Tanvi,True
+5,soup premix,snack,indian,veg,soup,65,False,False,True,https://www.instagram.com/reel/DR4AeWHD-7n/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==,2025-12-16T15:44:30.871109,Tanvi,True
+6,instant soup,snack,indian,veg,soup,5,False,False,False,https://www.instagram.com/reel/DR4AeWHD-7n/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==,2025-12-16T15:47:01.756003,Tanvi,True
