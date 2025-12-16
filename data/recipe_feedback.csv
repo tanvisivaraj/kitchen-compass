@@ -1,3 +1,0 @@
-feedback_id,recipe_id,rating,liked,comments,cooked_on,would_make_again
-1,1,4.5,True,"Quick, filling breakfast",2025-01-10,True
-2,2,2.0,False,"Too bland, needs spice",2025-01-12,False

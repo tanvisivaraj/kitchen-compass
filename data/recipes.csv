@@ -1,5 +1,0 @@
-recipe_id,name,cuisine,dish_type,requires_airfryer,requires_soaking,meal_prep_type,video_url
-1,Vegetable Upma,Indian,breakfast,False,False,good_for_2_days,https://youtube.com/xxx
-2,Chana Salad,Indian,salad,False,True,prep_components,https://youtube.com/yyy
-3,Airfryer Tikkis,Indian,snack,True,False,freeze_friendly,https://youtube.com/zzz
-4,Overnight Oats,Global,breakfast,False,True,good_for_3_days,https://youtube.com/aaa
